@@ -1,0 +1,21 @@
+{
+  "name": "itfs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Dicaprio",
+  "license": "ISC",
+  "dependencies": {
+    "cookies": "^0.8.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "mongoose": "^5.12.15",
+    "nodemailer": "^6.6.2",
+    "paypal-rest-sdk": "^1.8.1"
+  }
+}

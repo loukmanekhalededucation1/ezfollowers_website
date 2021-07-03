@@ -1,0 +1,27 @@
+<div class="success">
+    <h1 class="title">Thank you for choosing us</h1>
+    <div class="content">
+    <div class="section">
+        <h1>Items :</h1>
+        <p><img src="/images/{{toLower (selected details.user.selected)}}.png" alt="{{selected details.user.selected}}" width="35px" height="35px" style="border-radius: 10px;">{{details.payment.transactions.0.item_list.items.0.name}}</p>
+        <h1>Price :</h1>
+        <p>{{details.payment.transactions.0.item_list.items.0.price}}$</p>
+    </div>
+    <div class="section">
+        <h1>Transaction Info :</h1>
+        <p>Url : &nbsp;<a onclick="event.preventDefault();" class="link" href="{{details.user.url}}">{{details.user.url}}</a></p>
+        <p>Payed with : Paypal <img src="/images/paypal.png" alt="paypal" width="35px" height="35px"
+         style="border-radius: 10px;"></p>
+         <p>Delivered By : &nbsp;<a class="link" href="https://discord.gg/DrKRbZ7QDr">Thunders E-SPORTS</a></p>
+         <p>Email Adress : {{details.user.email}}</p>
+         <p>Owner Full Name : {{details.user.full_name}}</p>
+    </div>
+    </div>
+    <div class="wide">
+        <p class="note">
+            Note : You will be automatically emailed with the purchase details
+        </p>
+        <p class="by">By : Thunders E-SPORTS</p>
+    </div>
+
+</div>

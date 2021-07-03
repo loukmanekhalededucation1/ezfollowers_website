@@ -1,0 +1,47 @@
+<h1 class="title">Admin</h1>
+    <div class="container">
+
+    
+    <%for (follower of followers) {%>
+        <div class="follower">
+            <h1>Full Name: <%=follower.full_name%></h1>
+            <p>Given Price : <%=follower.price%>$</p>
+            <p>Requested Followers : <%=follower.followers%></p>
+            <p>Offer : <%=follower.requestedOffer == 1 ? "Instagram" : "Twitch"%></p>
+            <p>Email : <%=follower.email%></p>
+            <p>Url : <%=follower.url%></p>
+            <button class="done" target="<%=follower._id%>">Done</button>
+        </div>
+    <%}%>
+    <%if (followers.length == 0){%>
+        <p>No requested followers</p>
+    <%}%>
+    <script defer>
+        document.querySelectorAll('.done').forEach((btn)=>{
+            let target = btn.getAttribute('target');
+            console.log(btn)
+            btn.onclick = () => {
+                btn.innerText = 'Deleting...';
+            fetch('/users', {
+                method:'delete',
+                headers:{
+                    req_id:target
+                }
+            }).then(res => res.json()).then((res)=>{
+                fetch('/followers',{
+                    method:'post',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({
+                        user:'thunders_admin',
+                        pass:'#0ezfollowerspassgmail#113#1'
+                    })}).then(res => res.text()).then(body => {
+                        document.body.innerHTML = body;
+                        s();
+                    })
+            })
+            }
+        })
+    </script>
+    </div>
