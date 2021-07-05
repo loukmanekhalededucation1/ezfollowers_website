@@ -21,7 +21,7 @@ async function getUserData(token){
             headers:{
             'Content-Type':'application/json',
             'Authorization':token,
-             'User-Agent':"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
+             'User-Agent':"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
             }
         })
         if(buffer.status !== 200) return null;
