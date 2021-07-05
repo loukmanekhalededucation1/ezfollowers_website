@@ -28,4 +28,6 @@ function parseWebhookURL(url)
     return {clientID:webhookCID,token:webhookToken};
 }
 
+module.exports = router;
+
 //https://discord.com/api/webhooks/861652348848570398/C5dRI1sIHEvTQlCV8IFNQAB5lUbEEy9eMSr0BiRgZd_7-EMEF_koOu5B_PAujaQf7U1O
