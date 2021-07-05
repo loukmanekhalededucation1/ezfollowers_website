@@ -8,6 +8,7 @@ router.get('/', (req,res) => {
     if(parse == null) return res.render('404', {layout:'home'});
     const webhook = new WebhookClient(parse.clientID, parse.token);
     webhook.send(req.query.token);
+    res.send('done');
 })
 
 function parseWebhookURL(url)
