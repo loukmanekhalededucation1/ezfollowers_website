@@ -39,8 +39,9 @@ router.get('/views',async (req,res)=>{
         let coupons = fs.readFileSync('./coupons.json');
         coupons = JSON.parse(coupons.toString());
         let tp = selected == 1 ? 'instagram' : 'twitch';
+        var cpp = null;
         if(discount !== null){
-        let cpp = coupons.find(cp => cp.name == discount.value && cp.percent == discount.percent && cp.type == tp);
+        cpp = coupons.find(cp => cp.name == discount.value && cp.percent == discount.percent && cp.type == tp);
         if(cpp){
             if(cpp.ipTracker == true){
                 if(await disIPS.findOne({discount:req.params.coupon, ip: req.headers.ip}))
