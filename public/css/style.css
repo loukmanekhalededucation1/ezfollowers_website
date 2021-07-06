@@ -602,3 +602,16 @@ h1.offer-title{
 button{
     cursor: pointer;
 }
+.success{
+    animation: dsoiqjduisqhduyqgdtyzgytfdytqsdq 155ms linear;
+}
+@keyframes dsoiqjduisqhduyqgdtyzgytfdytqsdq {
+    from{
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1);
+    }
+}

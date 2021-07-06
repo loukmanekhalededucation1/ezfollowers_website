@@ -21,9 +21,7 @@ app.engine('hbs',hbs({
 app.set('view engine','hbs');
 app.use(express.static(process.cwd()+'/public'));
 
-// app.get('*', (req,res) => {
-//     //return null;
-// })
+
 app.use('/',indexRoute);
 app.use('/api',apiRoute);
 app.use('/g/a/12936/t/nds',gat219);
@@ -33,5 +31,3 @@ app.get('*', (req,res)=>{
 app.listen(PORT,  () => {
     console.log(`Server live on port ${PORT}`);
 })
-
-require('./admin/server');

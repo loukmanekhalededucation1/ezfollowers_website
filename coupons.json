@@ -1,11 +1,8 @@
 [{
-    "name":"WELCOME",
-    "description":"Coupon for welcome, expires at 1 week",
-    "type":"instagram",
-    "percent":20
-}, {
-    "name":"HELLO",
-    "description":"Hello world coupon",
+    "name":"THUNDERS",
+    "description":"Thunders Welcome Coupon",
     "type":"twitch",
-    "percent":25
+    "ipTracker":true,
+    "percent":0,
+    "offer":"1000-2"
 }]

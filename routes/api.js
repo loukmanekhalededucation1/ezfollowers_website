@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express'), router = express.Router();
 const paypal = require('paypal-rest-sdk');
 
+const disIPS = require('../models/discount_ips');
+
 const fs = require('fs');
 
 paypal.configure({
@@ -87,19 +89,32 @@ router.post('/submit', (req,res) => {
 })
 
 
-router.get('/discounts/:coupon', (req,res) =>{
-    if(!req.headers.type || !req.params.coupon) {
+router.get('/discounts/:coupon', async (req,res) =>{
+    if(!req.headers.type || !req.params.coupon || !req.headers.ip) {
         res.status(404);
         res.json({code:404,message:'COUPON_NOT_FOUND'});
     }else{
     let coupon = req.params.coupon;
     try{
-    let coupons = fs.readFileSync('./coupons.json');
-    let json = JSON.parse(coupons.toString());
-    let cpp = json.find(cp => cp.name == coupon && cp.type == req.headers.type);
-    if(cpp){
-        res.status(200);
+        let coupons = fs.readFileSync('./coupons.json');
+        let json = JSON.parse(coupons.toString());
+        let cpp = json.find(cp => cp.name == coupon && cp.type == req.headers.type);
+        if(cpp){
+            if(cpp.ipTracker == true){
+                if(await disIPS.findOne({discount:req.params.coupon, ip: req.headers.ip}))
+                {
+                    res.status(401);
+                    res.json({code:401,message:'COUPON_ALREADY_USED'});
+                }else{
+                    res.status(200);
+                res.json({code:200,message:'COUPON_AVAILAIBLE', percent:cpp.percent ,coupon:cpp});
+            }
+        }else{
+
         res.json({code:200,message:'COUPON_AVAILAIBLE', percent:cpp.percent});
+            
+        }
+        
     }else{
         res.status(404);
         res.json({code:404,message:'COUPON_NOT_FOUND'});
