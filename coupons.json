@@ -1,0 +1,11 @@
+[{
+    "name":"WELCOME",
+    "description":"Coupon for welcome, expires at 1 week",
+    "type":"instagram",
+    "percent":20
+}, {
+    "name":"HELLO",
+    "description":"Hello world coupon",
+    "type":"twitch",
+    "percent":25
+}]
