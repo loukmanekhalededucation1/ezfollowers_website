@@ -88,6 +88,10 @@ router.post('/submit', (req,res) => {
 }
 })
 
+router.get('/discounts', (req,res)=>{
+    res.status(404);
+    res.json({code:404,message:'COUPON_NOT_FOUND'});
+})
 
 router.get('/discounts/:coupon', async (req,res) =>{
     if(!req.headers.type || !req.params.coupon || !req.headers.ip) {
