@@ -525,10 +525,16 @@ h1.offer-title{
     .intro{
         display: flex;
         flex-direction: column;
-        place-items: center
+        place-items: center;
+        padding-left: 50px;
+        padding-right: 50px;
+        width:calc(100% - 100px);
     }
     .intro h1{
-        font-size: 30px !important;
+        font-size: 26px !important;
+        text-align: center;
+    }
+    .intro .description{
         text-align: center;
     }
     
