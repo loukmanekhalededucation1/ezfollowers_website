@@ -541,7 +541,9 @@ h1.offer-title{
 }
 @media only screen and (max-width:840px) {
   
-    
+    body{
+        overflow-x: hidden;
+    }
     .footer .section{
         display: none;
     }
@@ -556,8 +558,12 @@ h1.offer-title{
         margin:10px 0 !important;
     }
     .edetails{
-        width: 85% !important;
-        padding:5px;
+        width: 90% !important;
+        padding:2px;
+        background:none !important;
+    }
+    .edetails .proceed{
+        transform: translateX(-20%);
     }
     .success{
         width: 80vw;
